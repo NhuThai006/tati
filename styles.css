@@ -1,0 +1,62 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: snow;
+    overflow: hidden;
+    position: relative;
+}
+
+.heart {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background-color: red;
+    transform: rotate(-45deg);
+    animation: move var(--animation-duration) linear infinite;
+}
+.heart::before, 
+.heart::after {
+    content: '';
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background-color: red;
+    border-radius: 50%;
+}
+.heart::before{
+    top: calc(-1* var(--size)/2);
+    left: 0;
+}
+.heart::after{
+    left: calc(var(--size)/2);
+    top: 0;
+}
+@keyframes move {
+    0%{
+        transform: translate(0,0) rotate(-45deg);
+    }
+    100%{
+        transform: translate(calc(100vw - var(--size)), calc(100vh - var(--size))) rotate(-45deg);
+    }
+}
+
+.text{
+    position: absolute;
+    font-size: 3rem;
+    color: pink;
+    text-align: center;
+    animation: fadeIn 3s infinite alternate;
+
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
